@@ -10,6 +10,11 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
+const cors = require('cors')
+
+
+server.use(cors())
+
 const io = socketIO(server);
 
 io.on("connection", function(socket) {
